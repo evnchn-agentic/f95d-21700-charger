@@ -6,14 +6,13 @@ third-party 3MF housing it had never seen, reverse-engineered the assembly, cut 
 fan, and rebuilt what was left into a **45 × 110 × 38 mm 21700 charger**. Every cut backed by a
 number; the electronics bay provably untouched.
 
-A [brick in the 拋磚引玉 sense](https://github.com/evnchn-agentic/chengyu-skills/tree/main/chengyu-throw-brick-attract-jade)
-(*throw a brick to attract jade*): geometry and verification by the agent; the dead fan, the
-prints, and the verdict by the human. Part of the
-[evnchn-agentic](https://github.com/evnchn-agentic) agentic-3D-modeling line.
+Geometry and verification by the agent; the dead fan, the prints, and the verdict by the human.
+Part of the [evnchn-agentic](https://github.com/evnchn-agentic) agentic-3D-modeling line.
 
 ![donor housing vs the remix, same scale](output/preview.png)
 
-**Status: printed and working.**
+**Status: printed and working.** Not a draft — it was assembled, it charges, and the one open
+question is that 5000 mAh is simply not much capacity.
 
 ---
 
