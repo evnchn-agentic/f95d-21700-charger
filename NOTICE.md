@@ -25,12 +25,16 @@ OSI `LICENSE` file that would misrepresent the upstream terms. Instead:
 
 ## What is and is not redistributed here
 
-- **Redistributed:** the two remixed shells. They are derivative geometry — the donor's
-  interior is preserved byte-for-byte in the electronics region by design, so they cannot
-  meaningfully be separated from the original.
-- **Not redistributed:** the donor's unmodified parts (battery door, button, light pipe,
-  kickstand legs, magnetic mount, duct ring, nameplate, bearing tools). Get those from the
-  original model — this remix only replaces two of its parts.
+- **Redistributed, because the build needs them:**
+  - the two **remixed shells** — derivative geometry; the donor's interior is preserved
+    byte-for-byte in the electronics bay by design, so it cannot meaningfully be separated
+    from the original;
+  - the donor's **battery door**, unmodified except for being re-oriented and merged with its
+    own printed-in support pad into one file (`print/03_battery_door.stl`). Without it the
+    cell bay does not close, so it is part of the print list rather than an optional extra.
+- **Not redistributed:** everything else of the donor's — button, light pipe, kickstand legs,
+  magnetic mount, duct ring, nameplate, bearing tools, and the back-shell support tab. They
+  belong to the fan build. Get them from the original model.
 
 ## Safety
 
