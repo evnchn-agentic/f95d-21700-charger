@@ -8,14 +8,13 @@ So: drop into the slicer, no rotation needed.
 Parts that the donor prints together with a printed-in support are merged into ONE STL, so
 the support cannot get separated from its part by the slicer's auto-arrange.
 """
-import numpy as np, trimesh, re, os, shutil, zipfile, glob
+import numpy as np, trimesh, re, os, shutil, zipfile
 
 # Read the plate transforms straight out of the donor 3MF so this script is self-contained.
-SRC = os.environ.get('F95D_3MF') or next(iter(glob.glob(os.path.expanduser(
-      '~/Downloads/*F95D*.3mf'))), None)
-if not SRC or not os.path.exists(SRC):
-    raise SystemExit("set F95D_3MF to the donor 3MF (default: ~/Downloads/*F95D*.3mf)")
-DEST=os.path.expanduser('~/f95d-21700-charger/print')
+SRC = os.environ.get('F95D_3MF') or os.path.expanduser('~/Downloads/共田F95D风扇外壳.3mf')
+if not os.path.exists(SRC):
+    raise SystemExit("set F95D_3MF to the donor 3MF (default: ~/Downloads/共田F95D风扇外壳.3mf)")
+DEST=os.path.join(os.path.dirname(os.path.abspath(__file__)),'print')
 if os.path.isdir(DEST): shutil.rmtree(DEST)
 os.makedirs(DEST)
 
@@ -25,7 +24,7 @@ items={m.group(1):[float(v) for v in m.group(2).split()]
 def mat(t):
     M=np.eye(4); M[:3,:3]=np.array(t[:9]).reshape(3,3).T; M[:3,3]=t[9:]; return M
 
-H=os.path.expanduser('~/f95d-21700-charger/source-frames')
+H=os.path.join(os.path.dirname(os.path.abspath(__file__)),'source-frames')
 # (out name, [(mesh path, item objectid), ...], note)
 JOBS=[
  ('01_front_shell.stl',            [(f'{H}/1_charger_front.stl','28')],                       'remixed 前盖'),

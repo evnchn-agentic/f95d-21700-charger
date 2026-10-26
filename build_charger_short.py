@@ -50,7 +50,10 @@ def rpt(t,m):
 
 print(f"=== SHORT VARIANT   BOSS_X={BOSS_X}  BACK_END={BACK_END:.3f}  X_END={X_END:.3f}")
 print(f"    case length = {abs(-71.5 - X_END):.3f} mm  (keep-donor-screws variant: 53.500)\n")
-front=trimesh.load('stl/front1.stl'); back=trimesh.load('stl/back_cover.stl')
+# The donor is not redistributed here: download it from MakerWorld (see README).
+SRC=os.environ.get('F95D_3MF') or os.path.expanduser('~/Downloads/共田F95D风扇外壳.3mf')
+donor=trimesh.load(SRC).geometry   # mesh ids of that revision: 27 = 前盖, 29 = 后盖
+front, back = donor['27'], donor['29']
 back_asm=back.copy(); back_asm.apply_translation([DX,DY,DZ])
 BIG=400.0
 
@@ -117,7 +120,7 @@ ok=True
 def check(c,m):
     global ok; print(("  PASS  " if c else "  FAIL  ")+m); ok=ok and bool(c)
 def zcol(m,x,y):
-    l,_,_=m.ray.intersects_location([[x,y,300]],[[0,0,-1]]); return np.sort(l[:,2])[::-1]
+    l,_,_=m.ray.intersects_location([[x,y,300]],[[0,0,-1]]); return np.sort(l.reshape(-1,3)[:,2])[::-1]
 
 def integrity(m, tag):
     """is_watertight alone is not enough: it passes on coincident-but-distinct vertices,

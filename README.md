@@ -96,6 +96,12 @@ light-tightness with a *donor-fails-too* power assertion so the test cannot pass
 `make_print_folder.py` then emits `print/` with each part in the donor author's own plate
 orientation, so nothing needs rotating in the slicer.
 
+To re-run both: the donor is not in this repo, so download 共田F95D风扇外壳 from MakerWorld to
+`~/Downloads/共田F95D风扇外壳.3mf` (or set `F95D_3MF`), then
+`pip install -r requirements.txt && python build_charger_short.py && python make_print_folder.py`.
+Parts are picked by the 3MF's object ids, which another revision renumbers; the one used here
+has SHA-256 `7d21a99a7ee998b1008408495e249323a0083aea266e470c33b71378b27ade89`.
+
 ---
 
 ## Printing
