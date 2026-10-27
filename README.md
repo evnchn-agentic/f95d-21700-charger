@@ -87,7 +87,7 @@ with or without it).
 
 ## Verification
 
-`build_charger_short.py` regenerates both shells from the donor 3MF and runs **33 checks** —
+`build_charger_short.py` regenerates both shells from the donor 3MF and runs **41 checks** —
 round-trip mesh integrity, envelope containment, electronics bay vs donor, screw bore depth and
 membrane thickness, axis coaxiality, boss wall and bay clearance, thread engagement, removal of
 the donor's old screw features, joint clearance measured against the donor's own joint, and
@@ -95,6 +95,15 @@ light-tightness with a *donor-fails-too* power assertion so the test cannot pass
 
 `make_print_folder.py` then emits `print/` with each part in the donor author's own plate
 orientation, so nothing needs rotating in the slicer.
+
+To re-run both: the donor is not in this repo, so download 共田F95D风扇外壳 from MakerWorld to
+`~/Downloads/共田F95D风扇外壳.3mf` (or set `F95D_3MF`), then
+`pip install -r requirements.txt && python build_charger_short.py && python make_print_folder.py`.
+The build writes `out_short/`; `make_print_folder.py` reads the committed `source-frames/`, so copy
+the two `charger_*_short.stl` shells over `source-frames/1_charger_front.stl` and `2_charger_back.stl`
+after changing the build.
+Parts are picked by the 3MF's object ids, which another revision renumbers; the one used here
+has SHA-256 `7d21a99a7ee998b1008408495e249323a0083aea266e470c33b71378b27ade89`.
 
 ---
 
